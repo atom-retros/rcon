@@ -14,6 +14,11 @@ class RconServiceProvider extends ServiceProvider
      */
     public function register()
     {
+        $this->mergeConfigFrom(
+            path: __DIR__.'/../config/rcon.php',
+            key: 'rcon',
+        );
+
         $this->app->bind(
             RconService::class,
             fn () => new RconService
