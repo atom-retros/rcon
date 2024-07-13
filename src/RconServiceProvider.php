@@ -3,28 +3,17 @@
 namespace Atom\Rcon;
 
 use Atom\Rcon\Services\RconService;
-use Spatie\LaravelPackageTools\Package;
-use Spatie\LaravelPackageTools\PackageServiceProvider;
+use Illuminate\Support\ServiceProvider;
 
-class RconServiceProvider extends PackageServiceProvider
+class RconServiceProvider extends ServiceProvider
 {
     /**
-     * Register services.
+     * Register any application services.
+     *
+     * @return void
      */
-    public function configurePackage(Package $package): void
+    public function register()
     {
-        $package
-            ->name('rcon')
-            ->hasConfigFile();
-    }
-
-    /**
-     * Bootstrap services.
-     */
-    public function register(): void
-    {
-        parent::register();
-
         $this->app->bind(
             RconService::class,
             fn () => new RconService
