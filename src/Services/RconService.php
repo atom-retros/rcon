@@ -15,7 +15,7 @@ class RconService
     /**
      * The connection status.
      */
-    protected bool $connected = false;
+    public bool $connected = false;
 
     /**
      * Create a new service instance.
