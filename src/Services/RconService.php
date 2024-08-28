@@ -162,7 +162,7 @@ class RconService
      */
     public function sendGift(int $userId, int $itemId, string $message = ''): mixed
     {
-        return $this->sendPacket('gift', [
+        return $this->sendPacket('sendgift', [
             'user_id' => $userId,
             'itemid' => $itemId,
             'message' => $message,
