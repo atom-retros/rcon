@@ -62,6 +62,13 @@ class RconService
      */
     public function sendPacket(string $key, mixed $data = null): mixed
     {
+        if ($this->connected && is_resource($this->service)) {
+            socket_close($this->service);
+            $this->connected = false;
+        }
+
+        $this->service = $this->connect();
+
         if (! $this->connected) {
             return null;
         }
